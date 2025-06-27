@@ -31,7 +31,7 @@ async function getAuthCode(host) {
           'Content-Type': 'application/json'
         }
       })
-    const data = await resp.json();
+    const data = await resp?.json();
     const secret = data?.message[0].token;
     return secret;
     

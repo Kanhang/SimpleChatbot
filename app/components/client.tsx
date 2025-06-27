@@ -13,15 +13,16 @@ const Client =  ({ host } : any) => {
     const [isPending, startTransition] = useTransition();
 
   const handleChat = () => {
+    if (loading) return;
     startTransition(async () => {
+      setLoading(true);
       const newMessages = await startChat(host,messages);
       if (newMessages) {
         setMessages(newMessages);
-        setLoading(false);
+            setLoading(false);
       }
     });
   };
-
 
     useEffect(() => {}, [cur]);
 
@@ -37,11 +38,9 @@ const Client =  ({ host } : any) => {
     }
     
     const callBot = async () => { 
-      if (messages.length % 2 === 0) {
+      if (messages.length % 2 === 0 || loading) {
         return;
       }
-  
-      setLoading(true);
       handleChat();
   
   }
