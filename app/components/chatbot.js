@@ -15,7 +15,7 @@ export default async function Chatbot () {
   // const getScrets = cache(initialize);
   //   const secret = await getScrets();
   //   async function initialize()  {
-  //      const resp = await fetch(`http://${host}/api`, {
+  //      const resp = await fetch(`https://${host}/api`, {
   //        method: 'GET',
   //        headers: {
   //          'Content-Type': 'application/json'

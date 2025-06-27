@@ -2,7 +2,7 @@
   "name": "authchatbot",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kanhang.github.io/chatbot",
+  "homepage": "https://kanhang.github.io/SimpleChatbot",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

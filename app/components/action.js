@@ -24,8 +24,8 @@ export async function startChat(host, messages) {
     
 
 async function getAuthCode(host) {
-
-    const resp = await fetch(`http://${host}/api`, {
+    let prefix = host.startsWith('localhost') ? 'http' : 'https';
+    const resp = await fetch(`${prefix}://${host}/api`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
