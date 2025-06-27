@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef, useTransition} from 'react';
 import styles  from "./client.module.css";
 import { startChat } from './action';
+import Image from 'next/image';
 
 const Client =  ({ host } : any) => {
      //callBot();
@@ -16,9 +17,12 @@ const Client =  ({ host } : any) => {
       const newMessages = await startChat(host,messages);
       if (newMessages) {
         setMessages(newMessages);
+        setLoading(false);
       }
     });
   };
+
+
     useEffect(() => {}, [cur]);
 
     useEffect(()=> {
@@ -36,9 +40,10 @@ const Client =  ({ host } : any) => {
       if (messages.length % 2 === 0) {
         return;
       }
+  
       setLoading(true);
       handleChat();
-      setLoading(false);
+  
   }
   
     const send = (e: React.MouseEvent) => {
@@ -52,8 +57,9 @@ const Client =  ({ host } : any) => {
               {messages.map((msg, index) => {
                 return <div key={index} className={msg && msg.role === 'user'? styles.userBox: styles.botBox}>{msg.content}</div>
               })}
-
-              <img src={"../assets/loading.webp"} width="100" height="100" style={{display: loading? 'block' : 'none'}}/>
+             
+          {loading ?
+              <Image src='/loading.webp'  alt="Dynamic Image" width="100" height="100" />: <></>}
             </div>
             <div  className={styles.inputBox}>
               <textarea value={cur} onChange={type} placeholder='Enter your message' ></textarea>
