@@ -14,8 +14,9 @@ const Client =  ({ host } : any) => {
 
   const handleChat = () => {
     if (loading) return;
+    setLoading(true);
     startTransition(async () => {
-      setLoading(true);
+
       const newMessages = await startChat(host,messages);
       if (newMessages) {
         setMessages(newMessages);
