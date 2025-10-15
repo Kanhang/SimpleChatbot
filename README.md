@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Demo : https://simple-chatbot-blue.vercel.app/
 
-## Getting Started
+Project Overview:
+This is a lightweight AI chatbot application built using Next.js and React, leveraging the free DeepSeek model available through OpenRouter's API platform. The application delivers conversational AI capabilities similar to commercial chatbots, with a clean, responsive interface optimized for modern web browsers.
 
-First, run the development server:
+Technical Implementation:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Frontend: Built with Next.js 14 (App Router) and React 18, utilizing TypeScript for type safety
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Styling: Tailwind CSS for responsive design and ShadCN UI components
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Database: PostgreSQL hosted on Neon for conversation history storage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Authentication: Next-Auth with GitHub OAuth integration
 
-## Learn More
+Deployment: CI/CD pipeline on Vercel with automatic preview deployments
 
-To learn more about Next.js, take a look at the following resources:
+Key Features:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Conversation Interface:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Real-time streaming responses
 
-## Deploy on Vercel
+Markdown rendering with syntax highlighting
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Conversation threading and history
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Mobile-responsive chat interface
+
+Model Configuration:
+
+Currently using DeepSeek's free model (128k context window)
+
+Modular architecture allows easy model switching
+
+Supports both free and premium API endpoints
+
+Configurable temperature and max token settings
+
+Data Persistence:
+
+User conversation history stored in Neon PostgreSQL
+
+Serverless API routes handle database operations
+
+Optimistic UI updates for smooth UX
+
+Development Advantages:
+
+100% open-source codebase (MIT licensed)
+
+Environment variable configuration for different deployment scenarios
+
+Comprehensive error handling and fallback UI states
+
+Built-in rate limiting and API usage analytics
+
+Future Roadmap:
+
+Implement model comparison functionality
+
+Add support for file uploads and document processing
+
+Introduce voice input/output capabilities
+
+Develop plugin architecture for extended functionality
+
+Deployment Notes:
+The production instance runs on Vercel's free tier with cold start optimizations, typically responding in under 800ms. The Neon PostgreSQL database maintains connection pooling for efficient data access, with automatic backups and point-in-time recovery.
+
+While currently using free services, the architecture is designed to scale vertically - the API endpoint can be switched to paid models (like GPT-4 or Claude 3) with just configuration changes, and the database can upgrade to paid Neon tiers without code modifications.
