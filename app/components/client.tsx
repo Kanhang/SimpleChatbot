@@ -15,6 +15,12 @@ const Client =  ({ host } : any) => {
   const handleChat = () => {
     if (loading) return;
     setLoading(true);
+
+// useTransition is a React Hook that allows you to update the 
+// state without blocking the UI. It lets you mark certain state updates as "non-urgent,"
+//  so they can be interrupted by more urgent updates
+//   (like typing in an input or clicking a button). 
+//   This is a key tool for improving the perceived performance of your application.
     startTransition(async () => {
 
       const newMessages = await startChat(host,messages);
