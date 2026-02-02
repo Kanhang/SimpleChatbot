@@ -6,7 +6,7 @@ export const revalidate = 60
 
 export async function GET () {
     if (!process.env.DATABASE_URL) {
-        return;
+        return  NextResponse.json({message: null});
     }
     const sql = neon(process.env.DATABASE_URL);
     const data = await sql('SELECT * FROM auth');
