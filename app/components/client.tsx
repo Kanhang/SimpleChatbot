@@ -12,13 +12,15 @@ import '../index.css';
 
 interface AgentProps {
   agent: string;
+  setMessages: Function;
   setAgent: Function;
 }
  const AgentSelections = (props: AgentProps): JSXElement => {
   const selectId = useId();
-  const {agent, setAgent} = props;
+  const {agent, setAgent, setMessages} = props;
   const setVal = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setAgent(event.target.value);
+    setMessages([]);
   }
   return (
     <>
@@ -91,7 +93,7 @@ const Client =  ({ host } : any) => {
                   // <LexicalRenderer content={'MY'}> </LexicalRenderer>
     return (
           <>
-            <AgentSelections agent={agent} setAgent={setAgent}/>
+            <AgentSelections agent={agent} setAgent={setAgent} setMessages={setMessages}/>
             <div className={styles.container}>
             <div ref={scrollContainerRef} className="h-[400px] border border-black border-solid overflow-auto"> 
        {messages.map((msg, index) => {
