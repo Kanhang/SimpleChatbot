@@ -1,11 +1,11 @@
 'use server'
 import { headers } from 'next/headers'
-import { neon } from '@neondatabase/serverless';
-import OpenAI from "openai";
-import createAction from './action';
 import Client from './client';
-import { BASEURL } from '../constants/bots'
-import { cache } from 'react'
+// import { neon } from '@neondatabase/serverless';
+// import OpenAI from "openai";
+// import createAction from './action';
+// import { BASEURL } from '../constants/bots'
+// import { cache } from 'react'
 
 
 export default async function Chatbot () {
@@ -26,5 +26,9 @@ export default async function Chatbot () {
   //    }
 
      
-     return (<Client host= {host} />)
+     return (
+     <>
+
+     <Client host= {host} />
+     </>)
 }

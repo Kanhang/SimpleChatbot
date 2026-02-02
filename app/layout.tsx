@@ -1,3 +1,5 @@
+//import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { Providers } from "./providers"; // Adjust path as needed
 
 export default function RootLayout({
   children,
@@ -7,7 +9,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
