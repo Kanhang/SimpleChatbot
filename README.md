@@ -1,11 +1,14 @@
 Demo : https://simple-chatbot-blue.vercel.app/
 
 Project Overview:
-This is a lightweight AI chatbot application built using Next.js and React, leveraging the free DeepSeek model available through OpenRouter's API platform. The application delivers conversational AI capabilities similar to commercial chatbots, with a clean, responsive interface optimized for modern web browsers.
+This is a lightweight AI chatbot application built using Next.js and React, leveraging the free DeepSeek model available through OpenRouter's API platform. The application delivers conversational AI capabilities similar to commercial chatbots, with a clean, responsive interface optimized for modern web browsers. It
+is a cutting-edge chatbot platform designed to bridge the gap between complex AI reasoning and high-fidelity user interaction. Unlike standard "chat-bubble" interfaces, this project utilizes a Multi-Agent Orchestration layer where specialized AI agents (Code Generator, Concept Explainer, and Logic Verifier) collaborate to fulfill user requests.
+
+The frontend is engineered with Lexical, a modular text editor framework, to ensure that AI-generated content—specifically code and technical documentation—is rendered with precision, interactivity, and rich formatting.
 
 Technical Implementation:
 
-Frontend: Built with Next.js 14 (App Router) and React 18, utilizing TypeScript for type safety
+Frontend: Built with Next.js 14 (App Router) and React 19, utilizing TypeScript for type safety
 
 Styling: Tailwind CSS for responsive design and ShadCN UI components
 
