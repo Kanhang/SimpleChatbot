@@ -7,6 +7,8 @@ import {
   FORMAT_TEXT_COMMAND 
 } from 'lexical';
 
+
+
 export const parseAndInsertText = (text, selection) => {
   const paragraphs = text.split('\n\n');
   
@@ -37,6 +39,7 @@ function parseInlineFormatting(text) {
   let code = false;
   
   for (let i = 0; i < text.length; i++) {
+    // ** means  bold
     if (text.substring(i, i + 3) === '**') {
       if (currentText) {
         nodes.push($createTextNode(currentText).toggleFormat(bold ? 'bold' : '').toggleFormat(italic ? 'italic' : ''));
@@ -44,12 +47,15 @@ function parseInlineFormatting(text) {
       }
       bold = !bold;
       i += 1;
+      // * mean italic
     } else if (text[i] === '*') {
       if (currentText) {
         nodes.push($createTextNode(currentText).toggleFormat(bold ? 'bold' : '').toggleFormat(italic ? 'italic' : ''));
         currentText = '';
       }
       italic = !italic;
+
+      //` mean code
     } else if (text[i] === '`') {
       if (currentText) {
         nodes.push($createTextNode(currentText).toggleFormat(code ? 'code' : ''));

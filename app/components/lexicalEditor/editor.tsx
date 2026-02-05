@@ -26,7 +26,7 @@ const editorConfig = {
 
 const EditorPlugin = ({content} : any) => {
    const [editor] = useLexicalComposerContext();
-
+ 
   useEffect(() => {
     if (content) {
       editor.update(() => {
@@ -58,6 +58,7 @@ const EditorWrapper = ({content} : any) => {
 export const LexicalRenderer = ({content} : any) => {
   console.log(content)
 
+   // this is to parse string content to JSON string
 const convertPlainTextToEditorState = (text:any) => {
   // This function returns a function that Lexical will call to initialize
   return (editor:any) => {

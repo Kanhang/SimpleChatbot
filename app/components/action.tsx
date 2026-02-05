@@ -6,44 +6,47 @@ import { BASEURL } from '../constants/bots';
 import { base_prompt_fn } from '../constants/prompt';
 
 export async function startChat(host: string, messages: any, mode: string) {
-    const getScrets =  cache(getAuthCode);
-    const secret = await getScrets(host);
-    const client = new OpenAI({
-        baseURL: BASEURL,
-        apiKey: secret,
-        dangerouslyAllowBrowser: true
-        });
-    if (!client) { 
-      return ;
-    }
-    
-    if (messages.length === 1) {
-      const instructions = {
-        role: 'system',
-        content: base_prompt_fn(mode)
-      }
-      messages.unshift(instructions);
-    }
+  const getScrets = cache(getAuthCode);
+  const secret = await getScrets(host);
+  const client = new OpenAI({
+    baseURL: BASEURL,
+    apiKey: secret,
+    dangerouslyAllowBrowser: true
+  });
+  if (!client) {
+    return;
+  }
 
-    const completion = await client.chat.completions.create({
-                messages: messages,
-                model: MODEL
-              });
-      
-          return [...messages, completion.choices[0].message];
-      }
-      
+  if (messages.length === 1) {
+    const instructions = {
+      role: 'system',
+      content: base_prompt_fn(mode)
+    }
+    messages.unshift(instructions);
+  }
 
-async function getAuthCode(host : string) {
-    let prefix = host.startsWith('localhost') ? 'http' : 'https';
-    const resp = await fetch(`${prefix}://${host}/api`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-    const data = await resp?.json();
-    const secret = data?.message[0].token;
-    return secret;
-    
+  const completion = await client.chat.completions.create({
+    messages: messages,
+    model: MODEL
+  });
+  if (completion.choices) {
+    return [...messages, completion.choices[0].message];
+  } else {
+    return null
+  }
+}
+
+
+async function getAuthCode(host: string) {
+  let prefix = host.startsWith('localhost') ? 'http' : 'https';
+  const resp = await fetch(`${prefix}://${host}/api`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  const data = await resp?.json();
+  const secret = data?.message[0].token;
+  return secret;
+
 }
