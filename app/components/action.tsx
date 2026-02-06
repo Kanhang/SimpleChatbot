@@ -2,10 +2,10 @@
 import { MODEL } from '../constants/bots';
 import OpenAI from "openai";
 import { cache } from 'react';
-import { BASEURL } from '../constants/bots';
+import { BASEURL, getModel} from '../constants/bots';
 import { base_prompt_fn } from '../constants/prompt';
 
-export async function startChat(host: string, messages: any, mode: string) {
+export async function startChat(host: string, messages: any, mode: string, model:string) {
     const getScrets =  cache(getAuthCode);
     const secret = await getScrets(host);
     const client = new OpenAI({
@@ -27,7 +27,7 @@ export async function startChat(host: string, messages: any, mode: string) {
 
     const completion = await client.chat.completions.create({
                 messages: messages,
-                model: MODEL
+                model: getModel(model)
               });
       
           return [...messages, completion.choices[0].message];
