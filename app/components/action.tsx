@@ -5,9 +5,9 @@ import { cache } from 'react';
 import { BASEURL, getModel} from '../constants/bots';
 import { base_prompt_fn } from '../constants/prompt';
 
-export async function startChat(host: string, messages: any, mode: string, model:string) {
+export async function startChat(host: string, messages: any, mode: string, model:string, account: number) {
     const getScrets =  cache(getAuthCode);
-    const secret = await getScrets(host);
+    const secret = await getScrets(host, account);
     const client = new OpenAI({
         baseURL: BASEURL,
         apiKey: secret,
@@ -34,7 +34,7 @@ export async function startChat(host: string, messages: any, mode: string, model
       }
       
 
-async function getAuthCode(host : string) {
+async function getAuthCode(host : string, account :number) {
     let prefix = host.startsWith('localhost') ? 'http' : 'https';
     const resp = await fetch(`${prefix}://${host}/api`, {
         method: 'GET',
@@ -43,7 +43,7 @@ async function getAuthCode(host : string) {
         }
       })
     const data = await resp?.json();
-    const secret = data?.message[0].token;
+    const secret = data?.message[account].token;
     return secret;
     
 }

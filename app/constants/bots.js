@@ -9,8 +9,8 @@ export const getModel = (model) => {
             return "arcee-ai/trinity-mini:free";
         case 'deepseek':
             return "deepseek/deepseek-r1-0528:free";
-        case 'nous':
-            return "nousresearch/hermes-3-llama-3.1-405b:free";
+        case 'random':
+            return "openrouter/free";
         case 'venice':
             return "cognitivecomputations/dolphin-mistral-24b-venice-edition:free";
         default:
