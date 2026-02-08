@@ -10,6 +10,8 @@ Technical Implementation:
 
 Frontend: Built with Next.js 14 (App Router) and React 19, utilizing TypeScript for type safety
 
+Template: render with Lexical Editor from Meta to render AI response in a proper format
+
 Styling: Tailwind CSS for responsive design and ShadCN UI components
 
 Database: PostgreSQL hosted on Neon for conversation history storage
